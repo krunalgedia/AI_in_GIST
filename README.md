@@ -4,17 +4,17 @@
 
 | Paper                                | Date       | Description                                      | Task                     |
 |--------------------------------------|------------|--------------------------------------------------|--------------------------|
-| [LetNet-5](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=726791)        | 1988 | CNN-AvgPool NN for softmax MNIST classifier, 1st uasge of CNNs & weight sharing idea, activations: tanh, softmax  | Multiclass Classification  |
+| [LetNet-5](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=726791)        | 1988 | CNN-AvgPool NN for softmax MNIST classifier, 1st usage of CNNs & weight sharing idea, activations: tanh, softmax  | Multiclass Classification  |
 | [AlexNet](https://papers.nips.cc/paper/2012/hash/c399862d3b9d6b76c8436e924a68c45b-Abstract.html)                     | 2012 | 1000 class classifier, Similar to LeNet but deeper, 1st usage of Dropout, ReLU    | Classification  |
-| [VGGNet-16/19](https://arxiv.org/abs/1409.1556) | 2015 | Very deep (16/19 layers) and narrow CNN, large number of small filters to capture more complex and granular features  | Classification  |
-| [InceptionNet](https://arxiv.org/abs/1409.4842)                                  | ...        | ...                                              | ...                      |
-| ...                                  | ...        | ...                                              | ...                      |
-| ...                                  | ...        | ...                                              | ...                      |
-| ...                                  | ...        | ...                                              | ...                      |
-| ...                                  | ...        | ...                                              | ...                      |
-| ...                                  | ...        | ...                                              | ...                      |
-| ...                                  | ...        | ...                                              | ...                      |
-| ...                                  | ...        | ...                                              | ...                      |
-| ...                                  | ...        | ...                                              | ...                      |
-| ...                                  | ...        | ...                                              | ...                      |
-| ...                                  | ...        | ...                                              | ...                      |
+| [VGGNet-16/19](https://arxiv.org/abs/1409.1556) | 2014 | Very deep (16/19 layers) and narrow CNN, large number of small filters 3X3 to capture more complex and granular features, stacking of many layers  | Classification  |
+| [InceptionNet](https://arxiv.org/abs/1409.4842) | 2014 | Stacking of parallel modules, 1X1 followed by either 3X3 or 5X5, or 1X1 modules. 1X1 reduces channels dim & time (bottleneck layers) and diff nXn extracts low & high-level features. Global avg pooling counters overfitting & no. of params, Vanishing gradient countered by 2 auxiliary classifiers using same labels (0.3 weighted in final loss).                                              | Classification                      |
+| [InceptionNetv2 & v3]() |     | Factorize nXn conv to 1Xn and nX1, thus improve speed. BN in auxiliary classifier, label smoothing for overfitting, RMSProp optimizer       | ...                                              | 
+| [ResNet]    |                              | Residual connection in CNN blocks of deep CNN for vanishing grads.                                                | ...                      |
+| [InceptionNetV4 and InceptionResNet] |        | More uniform inception modules with new dim reduction blocks, skip connect module o/p to i/p (same channel dim achieved by 1X1) & replaced pooling operation. Scale residula activation to 0.3 decrease vanishing grads.  | ...                               |
+| [DenseNet]   |     | Each layer in block recieves input from all previous layers counter vanishing grads, transition layers between dense blocks reduce spatial dim to balance computational cost and accuracy.                                            | ...                      |
+| [Xception] |   2017      | Based on Inception v3, instead of inception modules,  it uses depthwise separable (depth + pointwise) convolutions over input image (grouped convolutions: i/p channel-wise conv, concatenate and apply pointwise 1X1 conv)                                              | ...                      |
+| [ResNeXt]      | 2016        | CNN with several Depthwise separable convolutions with ResNet.                                            | ...                      |
+| [MobileNetv1]      | 2017       | Depthwise separable convolutions network for mobile and embedded devices.                                           | ...                      |
+| [MobileNetv2]      | 2018    | Inverted Residual connections (skip in narrow-wide-narrow type block with wide obtained by depthwise separable convolutions). Loss of extra info due to ReLU not coupled by wide-narrow-wide channel type block, linear activation in used in the final layer of block (linear bottleneck)     | ...                      |
+| [MobileNetv3]   | ...        | AutoML tools, MnasNet to select coarse architecture using reinforcement learning and NetAdapt to fine tune. Use squeeze-and-excitation block (per channel weights using global avg pooling and NN, apply to original channel), remove 3 expensive layers from v2.                                            | ...                      |
+| [EfficientNet]                                  |2020      | ...                                              | ...                      |
