@@ -52,3 +52,12 @@
 | [DistilBERT]()   | October 2019        | 60X faster, 0.40 size, 97% BERT accurate. Teacher-student knowledge distillation. Train: train teacher BERT for MLM task. Student BERT soft prediction with teacher BERT soft target using KL divergence loss, student BERT hard prediction with hard target using CE loss and cosine similarity loss between soft target and soft prediction embeddings.                                             | ...                      |
 | [TinyBERT]()    | 	September 2019     | Reduce Student BERT to 4 encoder block, 312 emb size (Teacher BERT has 12 blocks, 786 emb size). Knowledge distillation is not only at Prediction layer (as in DistilBERT), but also Embedding layer and transformer layer by minimizing MSE between them. Dimension mis-match b/w S and T solved by matrix factorization S(NX312) x Weight(312 X 768) = T(Nx768). Learn weight matrix also.                                             | ...                      |
 | ...    | ...        | ...                                              | ...                      |
+
+
+**Docuument AI**
+
+| Paper                                | Date       | Description                                    |                    |
+|--------------------------------------|------------|--------------------------------------------------|
+| [LayoutLM](https://arxiv.org/abs/1912.13318)    | ...        | Uses BERT as backbone model, takes trainable text embedding and new additional 4 positional embedding (bbox of each token) to get layoutLM embedding. Text and bbox were extracted using pre-built OCR reader. At the same time, the ROI/bbox text in image form is passed through Faster-RCNN to get image embeddings. They are then used with LayoutLM emb. for downstream tasks. Pre-trained for Masked Visual Language Model MLVM to learn text MSK using its position amb and other text+pos emb, Multi-label document classification to learn document representation in CLS token. Fine tuned for form understanding task, receipt understanding task, and document image classification task. BIESO tags for token labeling.                                                                 |
+| ...    | ...        | ...                                                                    |
+| ...    | ...        | ...                                                                   |
