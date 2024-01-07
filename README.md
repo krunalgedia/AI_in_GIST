@@ -1,5 +1,21 @@
 # AI_in_GIST
 
+**Encoding**
+
+| Encoding Type      | Categorical Ordinal Var     | Categorical Nominal Var   | Description                                      |
+|--------------------|-------------------|-------------------|--------------------------------------------------|
+| Classical          | One Hot      | One Hot                 | 1 when True otherwise 0, use when n(unique) is small/reasonable |
+|    | Label/ordinal  | -    | denotes hierarchical levels |
+|     | Hashing                 | Hashing   | Hash function mapping for each unique cats, can handle large cardinality/n(unique) |
+|     | Binary                | -    | One hot + Hashing |
+|  |  | Frequency | count number of unique |
+|  |  | | |
+|  Bayes| Target |Target | Encode target info in encoding using conditional target value for each unique cat value. Can lead to overfitting so smoothed versions exists.|
+|  | LOO Target | LOO Target| Exclude the current row while calculating target encoding for that row. |
+
+
+
+
 **Fully Convolution Neural Network**
 
 | Paper                                | Date       | Description                                      | Task                     |
