@@ -1,11 +1,12 @@
 # AI_in_GIST
 
-**Encoding**
+**Variable Encoding**
+*Categorical variable
 
 | Encoding Type      | Categorical Ordinal Var     | Categorical Nominal Var   | Description                                      |
 |--------------------|-------------------|-------------------|--------------------------------------------------|
 | Classical          | One Hot      | One Hot                 | 1 when True otherwise 0, use when n(unique) is small/reasonable |
-|    | Label/ordinal  | -    | denotes hierarchical levels |
+|    | Label/ordinal  | -    | Denotes hierarchical levels |
 |     | Hashing                 | Hashing   | Hash function mapping for each unique cats, can handle large cardinality/n(unique) |
 |     | Binary                | -    | One hot + Hashing |
 |  |  | Frequency | count number of unique |
@@ -13,6 +14,18 @@
 |  Bayes| Target |Target | Encode target info in encoding using conditional target value for each unique cat value. Can lead to overfitting so smoothed versions exists.|
 |  | LOO Target | LOO Target| Exclude the current row while calculating target encoding for that row. |
 
+*Numerical variable
+
+|Numerical Encoding| Description|
+|Binning equal|Bin equally, replace value with bin number. Depends on the numerical variable, problem at hand|
+|Binning uneuqal|Bin unequally, replace value with bin number. Depends on the numerical variable, problem at hand|
+|Binning quantile|Bin in quantiles of values of the variable, replace value with bin number. Depends on the numerical variable, problem at hand|
+
+**Handle Missing Values**
+| Task               | Classification   | Regression        | Time Series       | Clustering        |
+|-------------------|------------------|-------------------|-------------------|-------------------|
+| Description       | Assigning labels to data points based on features. | Predicting a continuous target variable. | Analyzing and forecasting sequential data points over time. | Grouping similar data points together based on similarity. |
+| Example Use Cases | Spam detection, Image classification. | Housing price prediction, Stock price forecasting. | Weather forecasting, Stock market analysis. | Customer segmentation, Anomaly detection. |
 
 
 
