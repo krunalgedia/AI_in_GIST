@@ -17,15 +17,15 @@
 *Numerical variable
 
 |Numerical Encoding| Description|
+|---|-----|
 |Binning equal|Bin equally, replace value with bin number. Depends on the numerical variable, problem at hand|
 |Binning uneuqal|Bin unequally, replace value with bin number. Depends on the numerical variable, problem at hand|
 |Binning quantile|Bin in quantiles of values of the variable, replace value with bin number. Depends on the numerical variable, problem at hand|
 
 **Handle Missing Values**
-| Task               | Classification   | Regression        | Time Series       | Clustering        |
-|-------------------|------------------|-------------------|-------------------|-------------------|
-| Description       | Assigning labels to data points based on features. | Predicting a continuous target variable. | Analyzing and forecasting sequential data points over time. | Grouping similar data points together based on similarity. |
-| Example Use Cases | Spam detection, Image classification. | Housing price prediction, Stock price forecasting. | Weather forecasting, Stock market analysis. | Customer segmentation, Anomaly detection. |
+| Classification   | Regression        | Time Series       | Clustering        |
+|------------------|-------------------|-------------------|-------------------|
+|                  |                   |                   |                   |
 
 
 
