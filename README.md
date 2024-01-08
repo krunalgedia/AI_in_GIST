@@ -25,7 +25,79 @@
 **Handle Missing Values**
 | Classification   | Regression        | Time Series       | Clustering        |
 |------------------|-------------------|-------------------|-------------------|
-|                  |                   |                   |                   |
+| Deletion                |   Deletion                |  Deletion                 | Deletion                  |
+| Conditional Imputation with mode        | Conditional Imputation with mean/median     | Forward/Backward fill         | Kmans Conditional imputation         |
+| -        |  Interpolation (linear, spline, etc)         | Interpolation (linear/spline)         | -        |
+| Treat as special category like UNK        |     -      |   -       |     Treat as saparate cluster    |
+|  -       |     -      |    Change bining to reduce effect (monthly-> quaterly)      |  -       |
+
+**Detect Outliers**
+| Method             | Description        |
+|--------------------|--------------------|
+|  Inter-quartile range (IQR)                  |  Statistical method to detect outliers using quantiles                  |
+|  Isolation forest                  |  Random forest, easy to detect outliers since they need fewer cuts/branches and can be separated easily.                  |
+|  One Class SVM                  | Separate outlier cluster from inline cluster since another class is the outlier, use kernel like rbf                   |
+|  DBSACN                  |  Clustering Algo, works for anomaly detection                  |
+|  Auto-encoder                  |  Deep Learning method to detect vectors away from normal embedding vector, thus larger loss for them                  |
+
+**Handle Outliers**
+
+| Method             | Description        |
+|--------------------|--------------------|
+| Deletion                 | Do only if you know the reason                   |
+| Transformation                   |  Can lead to loss of info present in the shape of input variable                  |
+| Truncate                   | Replace by the threshold                   |
+| Binning                   | Binning numerical vars                   |
+| Robust model                   | Like ensemble methods                   |
+| Robust loss                   | Like Huber loss                   |
+
+**Dimension Reduction Techniques**
+
+| Method             | Description        |
+|--------------------|--------------------|
+| Feature Selection  | Filter (remove correlation features, not imp features based on feature importance)                   |
+|             | Subsets (RFE & forward selection)               |
+|             | Train loop (LASSO)               |
+| Feature Extraction | PCA (linear), kernal PCA (like rbf kernal), t-SNE (non linear), UMAP (better for non linear, large dataset)               |
+|             | LDA (supervised ML, max separability of class directions)               |
+|                    |  Auto encoder (DL) as in clustering                  |
+| Clustering                    | Making groups for cats and numerical                   |
+| Binning                   | Binning for numerical and cats                  |
+| Aggegration features and transform                   | ex: Polynomial features, interaction terms                   |
+
+**Handle Skew data**
+
+| Function Transformation | Power Transformation | Quantile Transformation |
+|--------------------------|----------------------|--------------------------|
+| Logarithmic (>0 Right skewed input)             | Box-Cox (Input should be >0)             | Quantile Normalization  |
+| Squared (Left skewed input)             | Yeo-Johnson          | Rank Transformation      |
+| Square Root (>0 right skewed input)            |                    |                         |
+| Reciprocal (>0 strong right skewed input)            |                    |                         |
+
+**Techniques to handle imbalance dataset**
+| Method             | Description        |
+|--------------------|--------------------|
+| Oversample, undersample | oversample minority class with replacement, undersample/remove entries from majority class  |
+| BalancedML | like BalancedBaggingClassifier, does oversampling |
+| SMOTE | Synthetically generate new samples using KNN |
+| Appropriate ML | like tree ensemble methods |
+| Better metric | Precision, Recall, F-beta score instead of accuracy |
+| CV | Stratified cross-validation scores, bootstrapping, etc |
+
+**Types of Bias**
+|Bias|
+|---|
+| Inherent bias in data|
+| Sampling/data collection bias|
+| Preprocessing bias|
+| ML algo bias, like no L1/L2 regulaizer, etc|
+| ML algo evaluation metric bias|
+
+**Rules of Thumb**
+
+
+
+
 
 
 
