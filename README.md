@@ -5,7 +5,7 @@
 Brief overview of the project.
 
 ## Table of Contents
-- [Preprocessing and classical ML](#Preprocessing-and-classical-ML)
+- [Preprocessing](#Preprocessing)
   - [Variable Encoding](#Variable-Encoding)
   - [Handle Missing Values](#Handle-Missing-Values)
   - [Detect Outliers](#Detect-Outliers)
@@ -15,6 +15,11 @@ Brief overview of the project.
   - [Techniques to handle imbalance dataset](Techniques-to-handle-imbalance-dataset)
   - [Types of Bias](#Types-of-Bias)
   - [Goodness of fit test](#Goodness-of-fit-test)
+- [Classical ML](#Classical-ML)
+  - [Regression](#Regression)
+  - [Classification](#Classification)
+  - [Time Series](#Time-series)
+  - [Clustering](#Clustering) 
 - [DL Papers](#DL-Papers)
   - [Fully Convolution Neural Network](#Fully-Convolution-Neural-Network)
   - [Two Stage Object detectors](#Two-Stage-Object-detectors)
@@ -23,7 +28,7 @@ Brief overview of the project.
   - [Document AI](#Document-AI)
 
 
-## Preprocessing and classical ML
+## Preprocessing
 
 ### Variable Encoding
 
@@ -128,6 +133,26 @@ Brief overview of the project.
 | Adjusted R squared | Similar to R squared but takes model complexity into account (DOF) |
 
 
+## Classical ML
+
+### Regression & classification
+
+| Method             | Description        |
+|--------------------|--------------------|
+| Linear Regression/OLS | When x~y linearly, residual is homoscedastic, and variance(residual)=constant |
+| Linear Regression extension | Adding non-linear and interaction terms |
+| Generalised linear models |  |
+| Decision trees |  |
+| Random forest |  |
+| XGBoost |  |
+| Adaboost |  |
+| SVM |  |
+| Kernal SVM |  |
+| LDA |  |
+
+## Time Series
+
+## Clustering
 
 
 
