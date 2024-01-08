@@ -141,8 +141,8 @@ Brief overview of the project.
 |--------------------|--------------------|
 | Linear Regression/OLS | When x~y linearly, residual is homoscedastic, and variance(residual)=constant |
 | Linear Regression extension | Adding non-linear and interaction terms |
-| Generalised linear models | For GLM family: Check y: Count data-> Poisson, -ve Binomial, Continuous->Normal, Contin. right skew: Gamma, Conti. left skew: Inverse Gauss, Probability distri: Binomial, Multinomial  |
-||For GLM link function, check y~x: y~x -> Identity, ln(y)~x->Log link, logit(y)~x: Logit link|
+| Generalised linear models | For GLM family, check y<br> Count data-> Poisson<br> -ve Binomial<br> Continuous->Normal<br> Conti. right skew: Gamma<br> Conti. left skew: Inverse Gauss<br> Probability distribution: Binomial, Multinomial  |
+||For GLM link function, check y ~ x<br> y~x -> Identity<br> ln(y)~x->Log link<br> logit(y)~x: Logit link|
 | Decision trees | Classification:  |
 | Random forest |  |
 | XGBoost |  |
