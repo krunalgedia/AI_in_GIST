@@ -23,9 +23,9 @@ Brief overview of the project.
   - [Document AI](#Document-AI)
 
 
-##Preprocessing and classical ML
+## Preprocessing and classical ML
 
-###Variable Encoding
+### Variable Encoding
 
 | Encoding Type      | Categorical Ordinal Var     | Categorical Nominal Var   | Description                                      |
 |--------------------|-------------------|-------------------|--------------------------------------------------|
@@ -44,7 +44,7 @@ Brief overview of the project.
 |Binning uneuqal|Bin unequally, replace value with bin number. Depends on the numerical variable, problem at hand|
 |Binning quantile|Bin in quantiles of values of the variable, replace the value with bin number. Depends on the numerical variable, problem at hand|
 
-###Handle Missing Values
+### Handle Missing Values
 | Classification   | Regression        | Time Series       | Clustering        |
 |------------------|-------------------|-------------------|-------------------|
 | Deletion                |   Deletion                |  Deletion                 | Deletion                  |
@@ -53,7 +53,7 @@ Brief overview of the project.
 | Treat as special category like UNK        |     -      |   -       |     Treat as saparate cluster    |
 |  -       |     -      |    Change bining to reduce effect (monthly-> quaterly)      |  -       |
 
-###Detect Outliers
+### Detect Outliers
 | Method             | Description        |
 |--------------------|--------------------|
 |  Inter-quartile range (IQR)                  |  Statistical method to detect outliers using quantiles                  |
@@ -62,7 +62,7 @@ Brief overview of the project.
 |  DBSACN                  |  Clustering Algo, works for anomaly detection                  |
 |  Auto-encoder                  |  Deep Learning method to detect vectors away from normal embedding vector, thus larger loss for them                  |
 
-###Handle Outliers
+### Handle Outliers
 
 | Method             | Description        |
 |--------------------|--------------------|
@@ -73,7 +73,7 @@ Brief overview of the project.
 | Robust model                   | Like ensemble methods                   |
 | Robust loss                   | Like Huber loss                   |
 
-###Dimension Reduction Techniques
+### Dimension Reduction Techniques
 
 | Method             | Description        |
 |--------------------|--------------------|
@@ -87,7 +87,7 @@ Brief overview of the project.
 | Binning                   | Binning for numerical and cats                  |
 | Aggegration features and transform                   | ex: Polynomial features, interaction terms                   |
 
-###Handle Skew data
+### Handle Skew data
 
 | Function Transformation | Power Transformation | Quantile Transformation |
 |--------------------------|----------------------|--------------------------|
@@ -96,7 +96,7 @@ Brief overview of the project.
 | Square Root (>0 right skewed input)            |                    |                         |
 | Reciprocal (>0 strong right skewed input)            |                    |                         |
 
-###Techniques to handle imbalance dataset
+### Techniques to handle imbalance dataset
 | Method             | Description        |
 |--------------------|--------------------|
 | Oversample, undersample | oversample minority class with replacement, undersample/remove entries from majority class  |
@@ -106,7 +106,7 @@ Brief overview of the project.
 | Better metric | Precision, Recall, F-beta score instead of accuracy |
 | CV | Stratified cross-validation scores, bootstrapping, etc |
 
-###Types of Bias
+### Types of Bias
 |Bias|
 |---|
 | Inherent bias in data|
@@ -115,7 +115,7 @@ Brief overview of the project.
 | ML algo bias, like no L1/L2 regularizer, etc|
 | ML algo evaluation metric bias|
 
-###Goodness of fit test
+### Goodness of fit test
 | Test             | Description        |
 |--------------------|--------------------|
 | Chi-squared | Between two categorical variables like compare unbiased or biased coin toss distribution |
@@ -133,9 +133,9 @@ Brief overview of the project.
 
 
 
-##DL Papers
+## DL Papers
 
-###Fully Convolution Neural Network
+### Fully Convolution Neural Network
 
 | Paper                                | Date       | Description                                      |
 |--------------------------------------|------------|--------------------------------------------------|
@@ -154,7 +154,7 @@ Brief overview of the project.
 | [MobileNetv3](https://arxiv.org/abs/1905.02244)     | AutoML tools, MnasNet to select coarse architecture using reinforcement learning and NetAdapt to fine tune. Use [squeeze-and-excitation](https://medium.com/@tahasamavati/squeeze-and-excitation-explained-387b5981f249) block (per channel weights using global avg pooling and NN, apply to original channel), remove 3 expensive layers from v2.                                                              |
 | [EfficientNet](https://arxiv.org/abs/1905.11946)  |2020      | AutoML automated neural architecture search (NAS) to select balanced dim of width, depth and resolution (compound scaling method). Usage of efficient building blocks like inverted residuals, linear bottleneck                   |
 
-###Two Stage Object detectors
+### Two Stage Object detectors
 | Paper                                | Date       | Description                                      |
 |--------------------------------------|------------|--------------------------------------------------|
 | [RCNN](https://arxiv.org/abs/1311.2524)   | Selective search for regions proposal (~2000), warp each RoI and pass each through CNN for feature extraction, linear SVM for classification and offset bbox regression. Non-max suppression to select from >1 bbox of same object                |
@@ -163,13 +163,13 @@ Brief overview of the project.
 | [Mask RCNN](https://arxiv.org/abs/1703.06870)     | ...        | Add extra output to Faster RCNN to perform instance segmentation to classify each RoI.|
 | [Cascade RCNN](https://arxiv.org/abs/1712.00726) | ...        | Detection head bbox output depends on RPN performance in Faster RCNN, coupled by poor inference conditional on IoU. To counter, cascade of individual RPN is used each trained using the preceding bbox RPN prediction trained for increasing IoU. |        
 
-###Vision Transformers
+### Vision Transformers
 | Paper                                | Date       | Description                                      |
 |--------------------------------------|------------|--------------------------------------------------|
 | [Vision Transformer](https://arxiv.org/abs/2010.11929)    | October 2020       | Encoder block of original transformer. Segment images into patches, flatten each to pass and use them as tokens for trainable embedding layer (patch embeddings),  and treat them as tokers. Standard learnable 1D position embeddings (no gains with 2D-aware position embeddings). MLP layers with GELU non-linearity. CLS token for image classification. SOTA results when trained on large data (14M-300M images)                                                        |
 
 
-###NLP/Language Models
+### NLP/Language Models
 
 | Paper                                | Date       | Description                                      |
 |--------------------------------------|------------|--------------------------------------------------|
@@ -183,7 +183,7 @@ Brief overview of the project.
 | ...    | ...        | ...                                                          |
 
 
-###Document AI
+### Document AI
 
 | Paper                                | Date       | Description                                    |            
 |--------------------------------------|------------|--------------------------------------------------|
