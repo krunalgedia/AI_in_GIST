@@ -141,10 +141,10 @@ Brief overview of the project.
 |--------------------|--------------------|
 | Linear Regression/OLS | When x~y linearly, residual is homoscedastic, and variance(residual)=constant |
 | Linear Regression extension | Adding non-linear and interaction terms |
-| Generalised linear models | For GLM family, check y<br> Count data-> Poisson<br> -ve Binomial<br> Continuous->Normal<br> Conti. right skew: Gamma<br> Conti. left skew: Inverse Gauss<br> Probability distribution: Binomial, Multinomial  |
+| Generalised linear models | For GLM family, check y<br> Count data-> Poisson<br> negative Binomial<br> Continuous->Normal<br> Continuous right skew: Gamma<br> Continuous left skew: Inverse Gauss<br> Probability distribution: Binomial, Multinomial  |
 ||For GLM link function, check y ~ x<br> y~x -> Identity<br> ln(y)~x->Log link<br> logit(y)~x: Logit link|
-| Decision trees | Classification:  |
-| Random forest |  |
+| Decision trees | Classification: Split variable having minimum Gini, max information gain or minimum entropy <be> Split variable at a boundary giving minimum SSR in its final leaf nodes|
+| Random forest | Bagging + Feature Selection i.e. |
 | XGBoost |  |
 | Adaboost |  |
 | SVM |  |
@@ -152,6 +152,21 @@ Brief overview of the project.
 | LDA |  |
 
 ### Time Series
+
+| Method             | Description        |
+|--------------------|--------------------|
+| Moving Average  |  Smoothing method, give equal importance to all data in the context window |
+| Simple exponential smoothing  | Smoothing method, gives exponentially decay weight for moving average on neighboring data in context window. |
+| Holt's exponential smoothing  | Double exponential smoothing, Can extrapolate predict level+trend.  |
+| Winter-Holt's exponential smoothing  | Tripple exponential smoothing, can extrapolate level+trend+season  |
+| AR  | Forecast using lags  |
+| MA  | Forecast using error/residual on previous lags  |
+| SARIMA  | Forecast season (S) and trend using  |
+|   |   |
+|   |   |
+|   |   |
+|   |   |
+
 
 ### Clustering
 
