@@ -143,7 +143,9 @@ Brief overview of the project.
 | Linear Regression extension | Adding non-linear and interaction terms |
 | Generalised linear models | For GLM family, check y<br> Count data-> Poisson<br> negative Binomial<br> Continuous->Normal<br> Continuous right skew: Gamma<br> Continuous left skew: Inverse Gauss<br> Probability distribution: Binomial, Multinomial  |
 ||For GLM link function, check y ~ x<br> y~x -> Identity<br> ln(y)~x->Log link<br> logit(y)~x: Logit link|
-| Decision trees | Classification: Split variable having minimum Gini, max information gain or minimum entropy <be> Split variable at a boundary giving minimum SSR in its final leaf nodes|
+|Naive Bayes| Mainly for classification problems, calculates Bayes probability for each of the target classes for the given test example and checks which target has the highest probability. If input variable is Gaussian distributed, can use Gaussian NB, similarly Multi-nomial NB.|
+|  ||
+| Decision trees | Classification: Split variable having minimum Gini, max information gain, or minimum entropy <be> Split variable at a boundary giving minimum SSR in its final leaf nodes|
 | Random forest | Bagging + Feature Selection i.e. |
 | XGBoost |  |
 | Adaboost |  |
