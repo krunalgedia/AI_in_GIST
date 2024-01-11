@@ -6,13 +6,13 @@ Brief overview of the project.
 
 ## Table of Contents
 - [Preprocessing](#Preprocessing)
-  - [Variable Encoding](#Variable-Encoding)
   - [Handle Missing Values](#Handle-Missing-Values)
   - [Detect Outliers](#Detect-Outliers)
   - [Handle Outliers](#Handle-Outliers)
   - [Dimension Reduction Techniques](#Dimension-Reduction-Techniques)
   - [Handle Skew data](#Handle-Skew-data)
   - [Techniques to handle imbalance dataset](Techniques-to-handle-imbalance-dataset)
+  - [Variable Encoding](#Variable-Encoding)
   - [Types of Bias](#Types-of-Bias)
   - [Goodness of fit test](#Goodness-of-fit-test)
 - [Classical ML](#Classical-ML)
@@ -30,24 +30,7 @@ Brief overview of the project.
 
 ## Preprocessing
 
-### Variable Encoding
 
-| Encoding Type      | Categorical Ordinal Var     | Categorical Nominal Var   | Description                                      |
-|--------------------|-------------------|-------------------|--------------------------------------------------|
-| Classical          | One Hot      | One Hot                 | 1 when True otherwise 0, use when n(unique) is small/reasonable |
-|    | Label/ordinal  | -    | Denotes hierarchical levels |
-|     | Hashing                 | Hashing   | Hash function mapping for each unique cats, can handle large cardinality/n(unique) |
-|     | Binary                | -    | One hot + Hashing |
-|  |  | Frequency | count number of unique |
-|  Bayesian| Target |Target | Encode target info in encoding using conditional target value for each unique cat value. Can lead to overfitting so smoothed versions exist.|
-|  | LOO Target | LOO Target| Exclude the current row while calculating target encoding for that row. |
-
-
-|Numerical Encoding| Description|
-|---|-----|
-|Binning equal|Bin equally, replace the value with bin number. Depends on the numerical variable, problem at hand|
-|Binning uneuqal|Bin unequally, replace value with bin number. Depends on the numerical variable, problem at hand|
-|Binning quantile|Bin in quantiles of values of the variable, replace the value with bin number. Depends on the numerical variable, problem at hand|
 
 ### Handle Missing Values
 | Classification   | Regression        | Time Series       | Clustering        |
@@ -62,10 +45,10 @@ Brief overview of the project.
 | Method             | Description        |
 |--------------------|--------------------|
 |  Inter-quartile range (IQR)                  |  Statistical method to detect outliers using quantiles                  |
-|  Isolation forest                  |  Random forest, easy to detect outliers since they need fewer cuts/branches and can be separated easily.                  |
-|  One Class SVM                  | Separate outlier cluster from inline cluster since another class is the outlier, use kernel like rbf                   |
-|  DBSACN                  |  Clustering Algo, works for anomaly detection                  |
-|  Auto-encoder                  |  Deep Learning method to detect vectors away from normal embedding vector, thus larger loss for them                  |
+|  Isolation forest                  |  Unsupervised, Random forest, easy to detect outliers since they need fewer cuts/branches and can be separated easily. Need prior knowledge of %outliers. |
+|  One Class SVM                  | Unsupervised, One cluster is the normal class, other comprises only the origin point. Maximize the margin. Better to use RBF kernel |
+|  DBSACN                  |  Clustering Algo, works to detect anomoly cluster (cluster is least points)  |
+|  Auto-encoder                  |  Deep Learning method to detect vectors away from data embedding vector in bottleneck layer, thus a larger loss for them                  |
 
 ### Handle Outliers
 
@@ -111,6 +94,25 @@ Brief overview of the project.
 | Better metric | Precision, Recall, F-beta score instead of accuracy |
 | CV | Stratified cross-validation scores, bootstrapping, etc |
 
+### Variable Encoding
+
+| Encoding Type      | Categorical Ordinal Var     | Categorical Nominal Var   | Description                                      |
+|--------------------|-------------------|-------------------|--------------------------------------------------|
+| Classical          | One Hot      | One Hot                 | 1 when True otherwise 0, use when n(unique) is small/reasonable |
+|    | Label/ordinal  | -    | Denotes hierarchical levels |
+|     | Hashing                 | Hashing   | Hash function mapping for each unique category, can handle large cardinality/n(unique) |
+|     | Binary                | -    | One hot + Hashing |
+|  |  | Frequency | count number of unique |
+|  Bayesian| Target |Target | Encode target info in encoding using conditional target value for each unique cat value. Can lead to overfitting so smoothed versions exist.|
+|  | LOO Target | LOO Target| Exclude the current row while calculating target encoding for that row. |
+
+
+|Numerical Encoding| Description|
+|---|-----|
+|Binning equal|Bin equally, replace the value with bin number. Depends on the numerical variable, problem at hand|
+|Binning uneuqal|Bin unequally, replace value with bin number. Depends on the numerical variable, problem at hand|
+|Binning quantile|Bin in quantiles of values of the variable, replace the value with bin number. Depends on the numerical variable, problem at hand|
+
 ### Types of Bias
 |Bias|
 |---|
@@ -119,6 +121,7 @@ Brief overview of the project.
 | Preprocessing bias|
 | ML algo bias, like no L1/L2 regularizer, etc|
 | ML algo evaluation metric bias|
+
 
 ### Goodness of fit test
 | Test             | Description        |
@@ -142,15 +145,14 @@ Brief overview of the project.
 | Linear Regression/OLS | When x~y linearly, residual is homoscedastic, and variance(residual)=constant |
 | Linear Regression extension | Adding non-linear and interaction terms |
 | Generalised linear models | For GLM family, check y<br> Count data-> Poisson<br> negative Binomial<br> Continuous->Normal<br> Continuous right skew: Gamma<br> Continuous left skew: Inverse Gauss<br> Probability distribution: Binomial, Multinomial  |
-||For GLM link function, check y ~ x<br> y~x -> Identity<br> ln(y)~x->Log link<br> logit(y)~x: Logit link|
-|Naive Bayes| Mainly for classification problems, calculates Bayes probability for each of the target classes for the given test example and checks which target has the highest probability. If input variable is Gaussian distributed, can use Gaussian NB, similarly Multi-nomial NB.|
-|  ||
-| Decision trees | Classification: Split variable having minimum Gini, max information gain, or minimum entropy <be> Split variable at a boundary giving minimum SSR in its final leaf nodes|
-| Random forest | Bagging + Feature Selection i.e. |
+|  |For GLM link function, check y ~ x<br> y~x -> Identity<br> ln(y)~x->Log link<br> logit(y)~x: Logit link|
+| Naive Bayes| Mainly for classification problems, calculates Bayes probability for each of the target classes for the given test example and checks which target has the highest probability. If the input variable is Gaussian distributed, can use Gaussian NB, similarly Multi-nomial NB.|
+| Decision trees | Classification: Split variable having minimum Gini, max information gain, or minimum entropy <br> Split variable at a boundary giving minimum SSR in its final leaf nodes|
+| Random forest | Bagging + Feature Selection i.e. training several DT each with randomly selected (default) sqrt(features) for classification and f/3 for regression. |
 | XGBoost |  |
-| Adaboost |  |
-| SVM |  |
-| Kernal SVM |  |
+| Adaboost | Make stump (DT with depth=1) for each var and choose var with least gini. Give it a weight (%correct factor). Now, remake the dataset with giving more weight(or copy data) which got incorrectly classified and redo the making of stump and weighting. |
+| SVM | Generally used in classification Maximize margin such that examples are classified correctly (classification) or target y values deviates less than epsilon from regression line/curve <br> Hard SVM: Maximize margin such that classes are on either side of the decision boundary. <br> Soft SVM: Maximize margin and weighted penalize incorrect classification from its decision from the boundary.  |
+| Kernal SVM | Use kernel trick to go to higher dimension i.e. use kernal methods which simplify calculation from low to high dim space |
 | LDA |  |
 
 ### Time Series
