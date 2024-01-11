@@ -83,7 +83,7 @@ Brief overview of the project.
 | Method             | Description        |
 |--------------------|--------------------|
 | Feature Selection  | Filter (remove correlation features, not imp features based on feature importance)                   |
-|             | Subsets (RFE & forward selection)               |
+|             | Subsets (RFE (use DT and remove highest gini feature one by one till desired features reached)& Wrapper techniques like forward, backward, bidirectional (same as RFE but you choose eliminator model))               |
 |             | Train loop (LASSO)               |
 | Feature Extraction | PCA (linear), kernal PCA (like rbf kernel), t-SNE (nonlinear), UMAP (better for nonlinear, large dataset)               |
 |             | LDA (supervised ML, max separability of class directions)               |
