@@ -14,9 +14,9 @@ Brief overview of the project.
   - [Techniques to handle imbalance dataset](Techniques-to-handle-imbalance-dataset)
   - [Variable Encoding](#Variable-Encoding)
 - [Statistics](#Statistics)
+  - [Distributions](#Distributions)
   - [Types of Bias](#Types-of-Bias)
   - [Goodness of fit test](#Goodness-of-fit-test)
-  - [Distributions](#Distributions)
 - [Classical ML](#Classical-ML)
   - [Regression](#Regression)
   - [Classification](#Classification)
@@ -117,6 +117,19 @@ Brief overview of the project.
 
 ## Statistics
 
+### Distributions
+
+| Distribution | Question it addresses | Parameters|
+|--------------|--------------|------|
+|Gaussian| Param mean, standard deviation | | 
+|Bernoulli| Probability of success (p) in a single trial| Mean=p, var=p(1-p) |
+|Binomial| Probability of k successes in n trials if p is the probability of success in 1 trial. Models number of successes in fixed number of trials.|Mean=np, var=np(1-p) |
+| Negative Binomial | Probability of k trials required for fixed r successes, if p is the probability of success in 1 trial. Models number of trials required for fixed no. of successes. | Mean=r/p, var=r(1-p)/p^2 |
+|Poisson|Probability of **x events** to occur **in unit** time interval if **lambda events** occur on average in unit time interval. Here, events (discrete var is x axis)| Mean=lambda, var=lambda|
+| Geometric | Probability of **an event**/success occurs **after x** number of trials (failures, discrete var), if one event/success occurs on average after **1/p** trials. Here p is the Bernoulli probability of success| Mean=1/p, var=(1-p)/p^2 |
+|Exponential| Probability of **an event** to occur **after x** time interval (or any continuous variable like price/distance) if one event occurs on average after **1/lambda** time interval. Here time (continuous var is x axis). Continuous equivalent of geometric distribution| Mean=1/lambda, var=1/lambda^2|
+| Gamma | Probability of **alpha events** to occur **in x** time interval if one event occurs in **1/beta** time interval. Here time (continuous var) is x axis. Generalised case of Exponential distribution. | Mean=alpha/beta, var=alpha/beta^2 |
+
 ### Types of Bias
 |Bias|
 |---|
@@ -138,22 +151,6 @@ Brief overview of the project.
 | BIC | Like AIC but Bayesian in approach, takes the number of prior data into account, more penalty for model complexity |
 | R squared | Continuous variables, MSE compared with Mean/Intercept only model MSE |
 | Adjusted R squared | Similar to R squared but takes model complexity into account (DOF) |
-
-
-### Distributions
-
-| Distribution | Question it addresses | Parameters|
-|--------------|--------------|------|
-|Gaussian| Param mean, standard deviation | | 
-|Bernoulli| Probability of success (p) in a single trial| Mean=p, var=p(1-p) |
-|Binomial| Probability of k successes in n trials if p is the probability of success in 1 trial. Models number of successes in fixed number of trials.|Mean=np, var=np(1-p) |
-| Negative Binomial | Probability of k trials required for fixed r successes, if p is the probability of success in 1 trial. Models number of trials required for fixed no. of successes. | Mean=r/p, var=r(1-p)/p^2 |
-|Poisson|Probability of **x events** to occur **in unit** time interval if **lambda events** occur on average in unit time interval. Here, events (discrete var is x axis)| Mean=lambda, var=lambda|
-| Geometric | Probability of **an event**/success occurs **after x** number of trials (failures, discrete var), if one event/success occurs on average after **1/p** trials. Here p is the Bernoulli probability of success| Mean=1/p, var=(1-p)/p^2 |
-|Exponential| Probability of **an event** to occur **after x** time interval (or any continuous variable like price/distance) if one event occurs on average after **1/lambda** time interval. Here time (continuous var is x axis). Continuous equivalent of geometric distribution| Mean=1/lambda, var=1/lambda^2|
-| Gamma | Probability of **alpha events** to occur **in x** time interval if one event occurs in **1/beta** time interval. Here time (continuous var) is x axis. Generalised case of Exponential distribution. | Mean=alpha/beta, var=alpha/beta^2 |
-
-
 
 
 ## Classical ML
