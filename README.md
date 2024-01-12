@@ -13,6 +13,7 @@ Brief overview of the project.
   - [Handle Skew data](#Handle-Skew-data)
   - [Techniques to handle imbalance dataset](Techniques-to-handle-imbalance-dataset)
   - [Variable Encoding](#Variable-Encoding)
+- [Statistics](#Statistics)
   - [Types of Bias](#Types-of-Bias)
   - [Goodness of fit test](#Goodness-of-fit-test)
 - [Classical ML](#Classical-ML)
@@ -113,6 +114,8 @@ Brief overview of the project.
 |Binning uneuqal|Bin unequally, replace value with bin number. Depends on the numerical variable, problem at hand|
 |Binning quantile|Bin in quantiles of values of the variable, replace the value with bin number. Depends on the numerical variable, problem at hand|
 
+## Statistics
+
 ### Types of Bias
 |Bias|
 |---|
@@ -177,8 +180,17 @@ Brief overview of the project.
 
 
 ### Clustering
-| Method             | Description        |
-|--------------------|--------------------|
+| Method      | Type      | Description        |
+|-------------|-------|--------------------|
+| K-means | | | 
+| Generalised K means| | | 
+| K mediods| | | 
+| Algomerative heirarchial  | | | 
+| DBSCAN | | | 
+| Gaussian Mixture models | | | 
+|   | | | 
+|  | | | 
+|  | | | 
 
 
 
