@@ -16,6 +16,7 @@ Brief overview of the project.
 - [Statistics](#Statistics)
   - [Types of Bias](#Types-of-Bias)
   - [Goodness of fit test](#Goodness-of-fit-test)
+  - [Distributions](#Distributions)
 - [Classical ML](#Classical-ML)
   - [Regression](#Regression)
   - [Classification](#Classification)
@@ -141,8 +142,8 @@ Brief overview of the project.
 
 ### Distributions
 
-| Distribution | Question it addresses |
-|--------------|--------------|
+| Distribution | Question it addresses | Parameters|
+|--------------|--------------|------|
 |Gaussian| Param mean, standard deviation | | 
 |Bernoulli| Probability of success (p) in a single trial| Mean=p, var=p(1-p) |
 |Binomial| Probability of k successes in n trials if p is the probability of success in 1 trial. Models number of successes in fixed number of trials.|Mean=np, var=np(1-p) |
