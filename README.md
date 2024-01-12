@@ -147,7 +147,7 @@ Brief overview of the project.
 |--------------------|--------------------|
 | Linear Regression/OLS | When x~y linearly, residual is homoscedastic, and variance(residual)=constant |
 | Linear Regression extension | Adding non-linear and interaction terms |
-| Generalised linear models | For GLM family, check y <br>  Count data-> Poisson<br>  Negative Binomial<br>  Continuous->Normal<br>  Continuous right skew: Gamma<br>  Continuous left skew: Inverse Gauss<br>  Probability distribution: Binomial, Multinomial  |
+| Generalised linear models | For GLM family, check y <br>  Count data-> Poisson, Negative Binomial<br>  Continuous->Normal<br>  Continuous right skew: Gamma<br>  Continuous left skew: Inverse Gauss<br>  Probability distribution: Binomial, Multinomial  |
 |  |For GLM link function, check y ~ x <br>  y~x -> Identity<br>  ln(y)~x->Log link<br>  logit(y)~x: Logit link|
 | Naive Bayes| Mainly for classification problems, calculates Bayes probability for each of the target classes for the given test example and checks which target has the highest probability. If the input variable is Gaussian distributed, can use Gaussian NB, similarly Multi-nomial NB.|
 |Logistic Regression| Classification algorithm where you do linear regression with target as logit(p) where p is the probability of being class1 in binary classification|
