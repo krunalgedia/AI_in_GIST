@@ -158,6 +158,7 @@ Brief overview of the project.
 | SVM | Generally used in classification Maximize margin such that examples are classified correctly (classification) or target y values deviates less than epsilon from regression line/curve <br> Hard SVM: Maximize margin such that classes are on either side of the decision boundary. <br> Soft SVM: Maximize margin and weighted penalize incorrect classification from its decision from the boundary.  |
 | Kernal SVM | Use kernel trick to go to higher dimension i.e. use kernal methods which simplify calculation from low to high dim space |
 | LDA | Supervised classification problem, find axes which maximize separation between means of classes and minimize the variance within the classes. |
+|kNN| Supervised Classification and regression algo, average/mode of k closest data points. |
 
 ### Time Series
 
@@ -170,27 +171,26 @@ Brief overview of the project.
 | AR  | Forecast using lags  |
 | MA  | Forecast using error/residual on previous lags |
 |ARMA|Forecast using both lags (AR->PACF) and residual of previous lags (MA->ACF, Lunj-box test). Do Grid search to find AR and MA order which minimizes AIC the most while training|
-| ARIMA |If the time series is not stationary. I stands which previous lags should be subtracted to remove the trend for the Time series to make it stationary.|
+| ARIMA |If the time series is not stationary. I in ARIMA stands which previous lags should be subtracted to remove the trend for the Time series to make it stationary.|
 | SARIMA  | Same as ARIMA, except takes seasonality into account. Thus its additionally, seasonality AR, MA, I order.  |
 | VAR | AR to forecast TS when forecast depends on lags from other correlated time series as well. Apply Gangar Causality to check correlation | 
 |Hybrid models  | Use of feature transformers like linear regression to predict trend and target transformers like tree-based, NN to predict seasonality.  |
 | Prophet | Curve fitting algo by Meta, can take weekly and yearly seasonality, holidays, and can have influx points for trend. |
-| biLSTM | bi-directional LSTM module. Can handle multiple time series model as well to predict one TS. needs normalization but no stationarity of TS. |
+| biLSTM | bi-directional LSTM module. Can handle multiple time series models as well to predict one TS. needs normalization but no stationarity of TS. |
 | ARCH/GARCH  | Forecast using the residual ARCH, forecast using the error in the residual GARCH. Example, apply it in %change of stock price series or when you want to understand the residual of some time series when they exhibit trends/seasonality  |
 
 
 ### Clustering
 | Method      | Type      | Description        |
 |-------------|-------|--------------------|
-| K-means | | | 
-| Generalised K means| | | 
-| K mediods| | | 
-| Algomerative heirarchial  | | | 
-| DBSCAN | | | 
-| Gaussian Mixture models | | | 
-|   | | | 
-|  | | | 
-|  | | | 
+| K-means | Hard, Centroid | Requires number of clusters prior (can be found via WCSS or Silhouette score), updates the centroid of each cluster iteratively.| 
+| Generalised K means| Hard, Centroid | Can have clusters of different sizes and shapes, resistant to outliers | 
+| K mediods| Hard, Centroid | Requires number of clusters prior. Uses actual data point as centroid| 
+| Algomerative hierarchical | Hard, Hierarchial | Merge data points by closest distance iteratively up to some distance threshold.| 
+| DBSCAN | Hard, Density | Does not require number of clusters prior, but min (radial) distance of a cluster (found by kNN distance plot) and number of points (default=2*features) | 
+| Spectral | Hard | First step: move to the lower dimension by using PCA or graph-based dimension reduction (node as points, edge as distance). Then apply a clustering algorithm like Kmeans | 
+| Fuzzy C means | Soft, Centroid | Update probability a point belongs to a centroid of a cluster iteratively. Needs number of clusters prior.| 
+| Gaussian Mixture models | Soft, Distribution | Use Gaussian distribution to define clusters, optimal param of Gaussian distribution found using Expectation-Minimization method | 
 
 
 
