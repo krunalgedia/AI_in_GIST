@@ -154,7 +154,7 @@ Brief overview of the project.
 | Adaboost | Make stump (DT with depth=1) for each var and choose var with least gini. Give it a weight (%correct). Now, remake the dataset with giving more weight(or copy data) which got incorrectly classified and redo the making of stump and weighting. |
 | SVM | Generally used in classification Maximize margin such that examples are classified correctly (classification) or target y values deviates less than epsilon from regression line/curve <br> Hard SVM: Maximize margin such that classes are on either side of the decision boundary. <br> Soft SVM: Maximize margin and weighted penalize incorrect classification from its decision from the boundary.  |
 | Kernal SVM | Use kernel trick to go to higher dimension i.e. use kernal methods which simplify calculation from low to high dim space |
-| LDA |  |
+| LDA | Supervised classification problem, find axes which maximize separation between means of classes and minimize the variance within the classes. |
 
 ### Time Series
 
@@ -162,18 +162,24 @@ Brief overview of the project.
 |--------------------|--------------------|
 | Moving Average  |  Smoothing method, give equal importance to all data in the context window |
 | Simple exponential smoothing  | Smoothing method, gives exponentially decay weight for moving average on neighboring data in context window. |
-| Holt's exponential smoothing  | Double exponential smoothing, Can extrapolate predict level+trend.  |
-| Winter-Holt's exponential smoothing  | Tripple exponential smoothing, can extrapolate level+trend+season  |
+| Holt's exponential smoothing  | Double exponential smoothing, Can forecast predict level+trend |
+| Winter-Holt's exponential smoothing  | Tripple exponential smoothing, can forecast level+trend+season, thus next cycle  |
 | AR  | Forecast using lags  |
-| MA  | Forecast using error/residual on previous lags  |
-| SARIMA  | Forecast season (S) and trend using  |
-|   |   |
-|   |   |
-|   |   |
-|   |   |
+| MA  | Forecast using error/residual on previous lags |
+|ARMA|Forecast using both lags (AR->PACF) and residual of previous lags (MA->ACF, Lunj-box test). Do Grid search to find AR and MA order which minimizes AIC the most while training|
+| ARIMA |If the time series is not stationary. I stands which previous lags should be subtracted to remove the trend for the Time series to make it stationary.|
+| SARIMA  | Same as ARIMA, except takes seasonality into account. Thus its additionally, seasonality AR, MA, I order.  |
+| VAR | AR to forecast TS when forecast depends on lags from other correlated time series as well. Apply Gangar Causality to check correlation | 
+|Hybrid models  | Use of feature transformers like linear regression to predict trend and target transformers like tree-based, NN to predict seasonality.  |
+| Prophet | Curve fitting algo by Meta, can take weekly and yearly seasonality, holidays, and can have influx points for trend. |
+| biLSTM | bi-directional LSTM module. Can handle multiple time series model as well to predict one TS. needs normalization but no stationarity of TS. |
+| ARCH/GARCH  | Forecast using the residual ARCH, forecast using the error in the residual GARCH. Example, apply it in %change of stock price series or when you want to understand the residual of some time series when they exhibit trends/seasonality  |
 
 
 ### Clustering
+| Method             | Description        |
+|--------------------|--------------------|
+
 
 
 
