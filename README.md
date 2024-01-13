@@ -1,9 +1,5 @@
 # AI_in_GIST
 
-## Overview
-
-Brief overview of the project.
-
 ## Table of Contents
 - [Preprocessing](#Preprocessing)
   - [Handle Missing Values](#Handle-Missing-Values)
