@@ -11,6 +11,8 @@
   - [Variable Encoding](#Variable-Encoding)
 - [Statistics](#Statistics)
   - [Distributions](#Distributions)
+  - [Correlation](#Correlation)
+  - [Hypothesis Tests](#Hypothesis-Tests)
   - [Types of Bias](#Types-of-Bias)
   - [Goodness of fit test](#Goodness-of-fit-test)
 - [Classical ML](#Classical-ML)
@@ -146,6 +148,35 @@
 | BIC | Like AIC but Bayesian in approach, takes the number of prior data into account, more penalty for model complexity |
 | R squared | Continuous variables, MSE compared with Mean/Intercept only model MSE |
 | Adjusted R squared | Similar to R squared but takes model complexity into account (DOF) |
+
+### Correlation
+| Var1 | Var2  | Test  |
+|---|---|---|
+| Categorical | Categorical | Chi-square test |
+| Categorical | Numerical | t-test, z-test, ANNOVA |
+| Numerical | Numerical | Pearson corr (linear), Spearman corr (rank, monotonic) |
+
+### Hypothesis Tests
+
+| Test | Description|
+|------|------------|
+| Shapiro-Wilk  |   |
+|   |   |
+|   |   |
+| t-test  |   |
+| z-test |   |
+| ANNOVA |   |
+|   |   |
+|   |   |
+|   |   |
+|   |   |
+|   |   |
+|   |   |
+|   |   |
+|   |   |
+
+
+### Hypothesis Tests
 
 
 ## Classical ML
