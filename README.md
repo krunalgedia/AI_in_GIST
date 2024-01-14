@@ -150,30 +150,30 @@
 | Adjusted R squared | Similar to R squared but takes model complexity into account (DOF) |
 
 ### Correlation
-| Var1 | Var2  | Test  |
+| Independent | Dependent  | Test  |
 |---|---|---|
 | Categorical | Categorical | Chi-square test |
 | Categorical | Numerical | t-test, z-test, ANNOVA |
-| Numerical | Numerical | Pearson corr (linear), Spearman corr (rank, monotonic) |
+| Numerical | Categorical | Logistic regression |
+| Numerical | Numerical | Pearson corr (linear), Spearman corr (rank, monotonic, categorical ordinal data also works) |
 
 ### Hypothesis Tests
 
-| Test | Description|
-|------|------------|
-| Shapiro-Wilk  |   |
-|   |   |
-|   |   |
-| t-test  |   |
-| z-test |   |
-| ANNOVA |   |
-|   |   |
-|   |   |
-|   |   |
-|   |   |
-|   |   |
-|   |   |
-|   |   |
-|   |   |
+| Test | Types | Description|
+|------|-------|-----|
+| Shapiro-Wilk  |  | H0: Distribution is normal, H1: Distribution is not normal; <2000 dataset |
+| Levene Test | Parametric  | H0: var(data1)=var(data2), H1: var(data1)!=var(data2), Homogeneity of variances  |
+| t-test  | Parametric, One-sided/Two-sided, One-sample/two-sample | H0: mu0=mu1, H1: mu0!=mu1 or mu  |
+| z-test | Parametric, One-sided/Two-sided, One-sample/two-sample | |
+| ANNOVA | Parametric, One way (1 dep and indep var)/ Two way (2 indep, 1 dep var) |  |
+| F-test  |  | |
+| Chi square   |  Non-parametric | |
+| Mann-Whitney  | Non-parametric  | |
+| Krusal Wallis  | Non-parametric  | |
+|   |   ||
+|   |   ||
+|   |   ||
+|   |   ||
 
 
 ### Hypothesis Tests
