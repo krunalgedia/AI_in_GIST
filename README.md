@@ -1,7 +1,7 @@
 # AI_in_GIST
 
 ## Table of Contents
-- [Preprocessing](Preprocessing)
+- [Preprocessing](#Preprocessing)
   - [Handle Missing Values](#Handle-Missing-Values)
   - [Detect Outliers](#Detect-Outliers)
   - [Handle Outliers](#Handle-Outliers)
@@ -27,8 +27,7 @@
   - [Document AI](#Document-AI)
 
 
-## [Preprocessing](https://krunalgedia.github.io/AI_in_GIST/Preprocessing)
-
+## Preprocessing
 
 
 ### Handle Missing Values
