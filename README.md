@@ -1,7 +1,7 @@
 # AI_in_GIST
 
 ## Table of Contents
-- [Preprocessing](https://krunalgedia.github.io/AI_in_GIST/Preprocessing)
+- [Preprocessing](Preprocessing)
   - [Handle Missing Values](#Handle-Missing-Values)
   - [Detect Outliers](#Detect-Outliers)
   - [Handle Outliers](#Handle-Outliers)
@@ -27,7 +27,7 @@
   - [Document AI](#Document-AI)
 
 
-## Preprocessing
+## [Preprocessing](https://krunalgedia.github.io/AI_in_GIST/Preprocessing)
 
 
 
@@ -86,6 +86,7 @@
 | Reciprocal (>0 strong right skewed input)            |                    |                         |
 
 ### Techniques to handle imbalance dataset
+
 | Method             | Description        |
 |--------------------|--------------------|
 | Oversample, undersample | oversample minority class with replacement, undersample/remove entries from majority class  |
@@ -130,6 +131,7 @@
 | Gamma | Probability of **alpha events** to occur **in x** time interval if one event occurs in **1/beta** time interval. Here time (continuous var) is x axis. Generalised case of Exponential distribution. | Mean=alpha/beta, var=alpha/beta^2 |
 
 ### Types of Bias
+
 |Bias|
 |---|
 | Inherent bias in data|
@@ -140,6 +142,7 @@
 
 
 ### Goodness of fit test
+
 | Test             | Description        |
 |--------------------|--------------------|
 | Chi-squared | Between two categorical variables like compare unbiased or biased coin toss distribution |
@@ -152,6 +155,7 @@
 | Adjusted R squared | Similar to R squared but takes model complexity into account (DOF) |
 
 ### Correlation
+
 | Independent | Dependent  | Test  |
 |---|---|---|
 | Categorical | Categorical | Chi-square test |
@@ -223,6 +227,7 @@
 
 
 ### Clustering
+
 | Method      | Type      | Description        |
 |-------------|-------|--------------------|
 | K-means | Hard, Centroid | Requires number of clusters prior (can be found via WCSS or Silhouette score), updates the centroid of each cluster iteratively.| 
