@@ -32,6 +32,7 @@
 
 
 ### Handle Missing Values
+
 | Classification   | Regression        | Time Series       | Clustering        |
 |------------------|-------------------|-------------------|-------------------|
 | Deletion                |   Deletion                |  Deletion                 | Deletion                  |
@@ -41,6 +42,7 @@
 |  -       |     -      |    Change bining to reduce effect (monthly-> quaterly)      |  -       |
 
 ### Detect Outliers
+
 | Method             | Description        |
 |--------------------|--------------------|
 |  Inter-quartile range (IQR)                  |  Statistical method to detect outliers using quantiles                  |
