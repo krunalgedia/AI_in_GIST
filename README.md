@@ -265,6 +265,7 @@
 | [EfficientNet](https://arxiv.org/abs/1905.11946)  |May 2019      | AutoML automated neural architecture search (NAS) to select balanced dim of width, depth and resolution (compound scaling method). Usage of efficient building blocks like inverted residuals, linear bottleneck                   |
 
 ### Two Stage Object detectors
+
 | Paper                                | Date       | Description                                      |
 |--------------------------------------|------------|--------------------------------------------------|
 | [RCNN](https://arxiv.org/abs/1311.2524) | 	November 2013 | Selective search for regions proposal (~2000), warp each RoI and pass each through CNN for feature extraction, linear SVM for classification and offset bbox regression. Non-max suppression to select from >1 bbox of same object                |
@@ -274,6 +275,7 @@
 | [Cascade RCNN](https://arxiv.org/abs/1712.00726) | December 2017       | Detection head bbox output depends on RPN performance in Faster RCNN, coupled by poor inference conditional on IoU. To counter, cascade of individual RPN is used each trained using the preceding bbox RPN prediction trained for increasing IoU. |        
 
 ### Vision Transformers
+
 | Paper                                | Date       | Description                                      |
 |--------------------------------------|------------|--------------------------------------------------|
 | [Vision Transformer](https://arxiv.org/abs/2010.11929)    | October 2020       | Encoder block of original transformer. Segment images into patches, flatten each to pass and use them as tokens for trainable embedding layer (patch embeddings),  and treat them as tokers. Standard learnable 1D position embeddings (no gains with 2D-aware position embeddings). MLP layers with GELU non-linearity. CLS token for image classification. SOTA results when trained on large data (14M-300M images)                                                        |
