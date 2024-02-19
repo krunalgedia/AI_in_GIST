@@ -11,10 +11,10 @@
   - [Variable Encoding](#Variable-Encoding)
 - [Statistics](#Statistics)
   - [Distributions](#Distributions)
-  - [Correlation](#Correlation)
-  - [Hypothesis Tests](#Hypothesis-Tests)
   - [Types of Bias](#Types-of-Bias)
+  - [Correlation](#Correlation)
   - [Goodness of fit test](#Goodness-of-fit-test)
+  - [Hypothesis Tests](#Hypothesis-Tests)
 - [Classical ML](#Classical-ML)
   - [Regression & classification](#Regression-&-classification)
   - [Time Series](#Time-series)
@@ -22,8 +22,11 @@
 - [DL Papers](#DL-Papers)
   - [Fully Convolution Neural Network](#Fully-Convolution-Neural-Network)
   - [Two Stage Object detectors](#Two-Stage-Object-detectors)
+  - [One Stage Object detectors](#One-Stage-Object-detectors)
   - [Vision Transformers](#Vision-Transformers)
-  - [NLP/Language Models](#NLP/Language-Models)
+  - [NLP/LLM Encoder-Decoder-models](#NLP/LLM-Encoder-Decoder-models)
+  - [NLP/LLM Encoder-models](#NLP/LLM-Encoder-models)
+  - [NLP/LLM Decoder-models](#NLP/LLM-Decoder-models)
   - [Document AI](#Document-AI)
 
 
@@ -171,17 +174,14 @@
 | t-test  | Parametric, One-sided/Two-sided, One-sample/two-sample | H0: mu0=mu1, H1: mu0!=mu1 or mu  |
 | z-test | Parametric, One-sided/Two-sided, One-sample/two-sample | |
 | ANNOVA | Parametric, One way (1 dep and indep var)/ Two way (2 indep, 1 dep var) |  |
-| F-test  |  | |
+| F-test  | Parameteric | |
 | Chi square   |  Non-parametric | |
 | Mann-Whitney  | Non-parametric  | |
 | Krusal Wallis  | Non-parametric  | |
-|   |   ||
-|   |   ||
-|   |   ||
+| Granger causality  |   ||
 |   |   ||
 
 
-### Hypothesis Tests
 
 
 ## Classical ML
@@ -284,24 +284,34 @@
 | Paper                                | Date       | Description                                      |
 |--------------------------------------|------------|--------------------------------------------------|
 | [Vision Transformer](https://arxiv.org/abs/2010.11929)    | October 2020       | Encoder block of original transformer. Segment images into patches, flatten each to pass and use them as tokens for trainable embedding layer (patch embeddings),  and treat them as tokers. Standard learnable 1D position embeddings (no gains with 2D-aware position embeddings). MLP layers with GELU non-linearity. CLS token for image classification. SOTA results when trained on large data (14M-300M images). Major issue is it is supervised pre-trained using ImageNet unlike BERT. BEiT was thus developed to overcome this.              |
-| [Data-efficient Image Transformer (DeiT)]   |  December 2020  | Similar architecture like ViT, but distilled version->distillation token learns from teacher. Input: CLS, Patch1, Patch2.., Distil tokens. Distil token minimizes distillation loss (soft: KL-div with teacher, hard: CE with teacher). Cosine sim between distill and CLS embedding 0.93 (expected <1.0 by construction). Found ConvNet teacher better than Transformer. Distil token is better than CLS token for classification. Joint CLS+distil token gives a middle performance.   |
-| Swin transformer   | March 2021   |  Hierarchial transformer, smaller ip patches (16X16 in ViT->4X4). RGB img -> Patch partition (4X4) -> Stage1(Linear embedding (NN) -> Swin transformer block)-> Stage2(Patch merging -> Swin transformer block) -> Stage3(Patch merging -> Swin transformer block)->Classification. Swin transformer block: 1st block does window attention (attention within window only, quick), 2nd block: shifted window attention (like sliding windows in convnet, cyclic rotation of patches in image and do attention so that if obj in between patch is captured in a new patch.). Patch merging/hierarchical structure helps go from local info capture to global info capture. The output of each hierarchical level can be used for object detection/segmentation algo backbone. (eg: with Mask R-CNN).|
-| BEiT (BERT-iT)   | June 2021   | BERT-like self-sueprvised MIM pre-training. No vocabulary or tokenizer like BERT for NLP task. For tokenizer, we associate every patch of image with a visual token obtained using a separate dVAE. Pre-training: ViT backbone. Tokens for image patches: dVAE (discrete) learns Visual tokens (tokens for each patch) extracted from Tokenizer->Visual tokens (bottleneck)->Decoder(IMG) model. i.e the pre-training MIM task is to predict discrete tokens of masked patches. RGB img -> Patches -> patch wise masking (40% max) -> Flatten patch for patch embedding+Position embedding-> ViT (BEiT encoder)-> MIM (mask img modelling) task to learn visual tokens corresponding to masked patch. Fine tune: Image classification: Linear classifier (global pooling+softmax classifier). Semantic Segmentation: pre-trained BEiT as backbone encoder, several deconvolution layers for decoder to produce segmentation. Object detection.   |
+| [Data-efficient Image Transformer (DeiT)](https://arxiv.org/abs/2012.12877)   |  December 2020  | Similar architecture like ViT, but distilled version->distillation token learns from teacher. Input: CLS, Patch1, Patch2.., Distil tokens. Distil token minimizes distillation loss (soft: KL-div with teacher, hard: CE with teacher). Cosine sim between distill and CLS embedding 0.93 (expected <1.0 by construction). Found ConvNet teacher better than Transformer. Distil token is better than CLS token for classification. Joint CLS+distil token gives a middle performance.   |
+| [Swin transformer](https://arxiv.org/abs/2103.14030)   | March 2021   |  Hierarchial transformer, smaller ip patches (16X16 in ViT->4X4). RGB img -> Patch partition (4X4) -> Stage1(Linear embedding (NN) -> Swin transformer block)-> Stage2(Patch merging -> Swin transformer block) -> Stage3(Patch merging -> Swin transformer block)->Classification. Swin transformer block: 1st block does window attention (attention within window only, quick), 2nd block: shifted window attention (like sliding windows in convnet, cyclic rotation of patches in image and do attention so that if obj in between patch is captured in a new patch.). Patch merging/hierarchical structure helps go from local info capture to global info capture. The output of each hierarchical level can be used for object detection/segmentation algo backbone. (eg: with Mask R-CNN).|
+| [BEiT (BERT-iT)](https://arxiv.org/abs/2106.08254)   | June 2021   | BERT-like self-sueprvised MIM pre-training. No vocabulary or tokenizer like BERT for NLP task. For tokenizer, we associate every patch of image with a visual token obtained using a separate dVAE. Pre-training: ViT backbone. Tokens for image patches: dVAE (discrete) learns Visual tokens (tokens for each patch) extracted from Tokenizer->Visual tokens (bottleneck)->Decoder(IMG) model. i.e the pre-training MIM task is to predict discrete tokens of masked patches. RGB img -> Patches -> patch wise masking (40% max) -> Flatten patch for patch embedding+Position embedding-> ViT (BEiT encoder)-> MIM (mask img modelling) task to learn visual tokens corresponding to masked patch. Fine tune: Image classification: Linear classifier (global pooling+softmax classifier). Semantic Segmentation: pre-trained BEiT as backbone encoder, several deconvolution layers for decoder to produce segmentation. Object detection.   |
 
 
 
 
-### NLP/Language Models
+### NLP Encoder-Decoder models
 
 | Paper                                | Date       | Description                                      |
 |--------------------------------------|------------|--------------------------------------------------|
 | [Transformer](https://arxiv.org/abs/1706.03762)    | 	June 2017   | Encoder-decoder model, Multi-head self-attention (Query, Key, Value) in encoder and Masked multihead attention MLM and multi-head cross attention (K,V from encoder output, V from decoder), skip connections, [Layer normalisation](https://stats.stackexchange.com/questions/474440/why-do-transformers-use-layer-norm-instead-of-batch-norm) (across all features of a token), BPE used as tokenizer, trainable text 512 length embedding, fixed non-trainable absolute position encoding (sin/cos), trained on WMT English-German, English-French dataset.    |
+
+### NLP Encoder models
+
+| Paper                                | Date       | Description                                      |
+|--------------------------------------|------------|--------------------------------------------------|
 | [BERT](https://arxiv.org/abs/1810.04805)    | October 2018 | Encoder transformer model, max input 512 tokens, WordPiece tokenizer, trainable text embedding length 768, fixed non-trainable absolute position encoding (sin/cos), multi-head self-attention (Query, Key, Value), final linear-relu-softmax layer, trained on left-right context (bidirectional embedding), Pre-training (MLM task (MASK token), Next Sentence Prediction NSP task using CLS-sent1-SEP-sent2-SEP tokens), BERT fine-tuning (Text Classification CLS token, Question-Answer Task CLS-ques-SEP-context-SEP).   |
 | [RoBERTa](https://arxiv.org/abs/1907.11692)    | July 2019        | Optimize BERT, Dynamic masking of tokens in MLM in training pre-training BERT, no NSP due to low value, ByteEncoder, X10 train data (160GB), larger batch size    |
 | [ELECTRA](https://arxiv.org/abs/2003.10555)    |  March 2020       | Replaced Token Detection instead of MLM (Generator BERT predicts MSK tokens, Discriminator BERT predicts isOriginal or isReplaced) thus focus on all tokens in sequence and not just MSK token in BERT, no NSP        |
 | [ALBERT](https://arxiv.org/abs/1909.11942)    | 	September 2019 | Cross param sharing across BERT blocks, Embedding matrix factorization (AXB=(AXN)*(NXB)) leading to 1/10 size of BERT. Pre-training MLM and Sentence order prediction SOP, no NSP since it makes more sense to know inter-sentence coherence.        |                                      
 | [DistilBERT](https://arxiv.org/abs/1910.01108)   | October 2019        | 60X faster, 0.40 size, 97% BERT accurate. Teacher-student knowledge distillation. Train: train teacher BERT for MLM task. Student BERT soft prediction with teacher BERT soft target using KL divergence loss, student BERT hard prediction with hard target using CE loss and cosine similarity loss between soft target and soft prediction embeddings.|
 | [TinyBERT](https://arxiv.org/abs/1909.10351)    | 	September 2019     | Reduce Student BERT to 4 encoder block, 312 emb size (Teacher BERT has 12 blocks, 786 emb size). Knowledge distillation is not only at Prediction layer (as in DistilBERT), but also at the Embedding layer and transformer layer by minimizing MSE between them. Dimension mis-match b/w S and T solved by matrix factorization S(NX312) x Weight(312 X 768) = T(Nx768). Learn weight matrix also.                                             | 
+
+### NLP Decoder models
+
+| Paper                                | Date       | Description                                      |
+|--------------------------------------|------------|--------------------------------------------------|
 | [GPT](https://s3-us-west-2.amazonaws.com/openai-assets/research-covers/language-unsupervised/language_understanding_paper.pdf)    | June 2018       | Generative pre-training and discriminatory fine tuning. Architecture is similar to the decoder of original transformer. Unsupervised pre-training (thus able to use large corpus) using long Book texts (thus capture long range info) for standard language model objective of maximizing likelihood of sum(log P(xi\x1..x_i-1)). The pre-trained language model supervised fine tuned for text classification, text entailment x=(premise$hypothesis)->y=class, similarity x=(sent1$sent2) and x=(sent2$sent1)->y=1/0, question and answer mcq x(context$ans1), x(context$ans2)->softmax(2).   |
 | [GPT-2](https://d4mucfpksywv.cloudfront.net/better-language-models/language-models.pdf)  | February 2019  | Demonstrated 0-shot learning (i.e. it learns language processing task without explicit supervision) with Large LM possible. Used new dataset WebText, modified BPE tokenizer, minor modification to decoder, context size 512->1024, 1.5B params. SOTA perplexity on language modelling (predict x_t\x1..x_t-1), accuracy on NER, perplexity/accuracy on LAMBDA data (predict last word of long range sent), accuracy on common sense reasoning, not SOTA ROUGE F1 in summarisation, BLUE in translation, comparable in accuracy in question-answer. These evaluation done without explicit training (fine tuning)|
 | [GPT-3](https://arxiv.org/abs/2005.14165)  | May 2020  |  175B params, Auto-regressive language model. Similar model like GPT-2. SOTA on Language model, 35->20 on perplexity, accuracy score on 0 shot, one-shot, few shot; in question answer in 1/3 dataset over T5, not best for translation since 93% training in English, mixed for common sense reasoning, arithmetic task performance improves with shots |
@@ -313,9 +323,9 @@
 | Paper                                | Date       | Description                                    |            
 |--------------------------------------|------------|--------------------------------------------------|
 | [LayoutLM](https://arxiv.org/abs/1912.13318)    | December 2019        | Uses BERT as backbone model, takes trainable text embedding and new additional 4 positional embeddings (bbox of each token) to get layoutLM embedding. Text and bbox were extracted using pre-built OCR reader. At the same time, the ROI/bbox text in image form is passed through Faster-RCNN to get image embeddings. They are then used with LayoutLM emb. for fine-tuning tasks. Pre-trained for Masked Visual Language Model MLVM to learn text MSK using its position amb and other text+pos emb, Multi-label document classification to learn document representation in CLS token. Fine-tuned for form understanding task, receipt understanding task, and document image classification task i.e. text, layout info in pre-training and visual info in fine-tuning. WordPiece tokenizer, BIESO tags for token labeling.                      |
-|[Table Net] | January 2020| Extracts table from a  scanned document. A segmentation model similar to UNet, but strided conv for upsampling. VGG-19 as encoder, two separate decoder: table segmentation and column segmentation targets. Table segmentation op helps to select only those bboxes and text from tessarct-OCR lying inside the table and column segmentation. Row detected by looking for demarcation lines between vertically placed words via Randon transform. For multi rows structure, look for rows when all horizontal entries there. Defaults to every horizontal line as a row.  |
+|[Table Net](https://arxiv.org/abs/2001.01469) | January 2020| Extracts table from a  scanned document. A segmentation model similar to UNet, but strided conv for upsampling. VGG-19 as encoder, two separate decoder: table segmentation and column segmentation targets. Table segmentation op helps to select only those bboxes and text from tessarct-OCR lying inside the table and column segmentation. Row detected by looking for demarcation lines between vertically placed words via Randon transform. For multi rows structure, look for rows when all horizontal entries there. Defaults to every horizontal line as a row.  |
 | [LayoutLMv2](https://arxiv.org/abs/2012.14740)    | December 2020        | Multi-modal emb with Spatial-Aware self-attention Mechanism (self-attention weights with bias vector to get relative spatial info). Pretraining using text, layout and image emb. Text emb = token emb + 1D position emb for token index + segment emb for different text segments. Visual emb = flatten features from ResNeXt-FPN + 1D position emb for token index + segment emb for different text segment, Layout emb - 6 bbox co-od. Pre-training: MVLM, Text image alignment TIA: cover images of token lines, predict covered or not, Text-Image matching: CLS token to predict if image is from the same text. Fine tune: Document image classification, token-level classification, visual question answering on document images.                                                                   |
-| Donut | November 2021  | OCR-free Document understanding transformer avoids inefficiency of OCR like text not detected, doc structure). Swin Transformer as encoder and BART as decoder. Trained using teacher forcing strategy. Input image to encoder, input Promt (<Classification>, <vqa><question>..</question><answer>, <parsing> (info extract)) and encoder op to decoder input.Pre-training: Train model to read all text from top to bottom, minimize CE of next token prediction given previous token and image. Fine tuning: Document Classification (CDIP dataset), Document info extraction(receipt data, CORD, Ticker, business card,) Document Visual Question Answer (DocVQA)   |
-| [LayoutLMv3]()    | April 2022        | ...                                                                   |
-| UDOP  | December 2022  | Unifies Vision-Text-Layout through VLT transformer. A VLT encoder and 2 decoders: TL and V. Encoder-TL decoder follows T5 architecture (generate text and layout toekns in seq-to-seq manner). V decoder is Masked Auto-Encoder (MAE) decoder (generate img pixel). T-V embedding: divide image in patches, add tokens of patch and corr. text if  present as unified TV embedding. For TV-L embedding, discrete bbox and add them to TV embedding to create VLT embedding. Generative pretraining (input is prompt): Self-supervised (layout modelling: bbox/text, img; visual text recognition: text/bbox; text-layout recognition: text,bbox/img; MIM: img/text, bbox), Supervised pretraining (classification, layout analysis:give bbox if prompt para; info extraction, question answer) |
-| DocLLM  | January 2024  | |
+| [Donut](https://arxiv.org/abs/2111.15664) | November 2021  | OCR-free Document understanding transformer avoids inefficiency of OCR like text not detected, doc structure). Swin Transformer as encoder and BART as decoder. Trained using teacher forcing strategy. Input image to encoder, input Promt (<Classification>, <vqa><question>..</question><answer>, <parsing> (info extract)) and encoder op to decoder input.Pre-training: Train model to read all text from top to bottom, minimize CE of next token prediction given previous token and image. Fine tuning: Document Classification (CDIP dataset), Document info extraction(receipt data, CORD, Ticker, business card,) Document Visual Question Answer (DocVQA)   |
+| [LayoutLMv3](https://arxiv.org/abs/2204.08387)    | April 2022        | ...                                                                   |
+| [UDOP](https://arxiv.org/abs/2212.02623)  | December 2022  | Unifies Vision-Text-Layout through VLT transformer. A VLT encoder and 2 decoders: TL and V. Encoder-TL decoder follows T5 architecture (generate text and layout toekns in seq-to-seq manner). V decoder is Masked Auto-Encoder (MAE) decoder (generate img pixel). T-V embedding: divide image in patches, add tokens of patch and corr. text if  present as unified TV embedding. For TV-L embedding, discrete bbox and add them to TV embedding to create VLT embedding. Generative pretraining (input is prompt): Self-supervised (layout modelling: bbox/text, img; visual text recognition: text/bbox; text-layout recognition: text,bbox/img; MIM: img/text, bbox), Supervised pretraining (classification, layout analysis:give bbox if prompt para; info extraction, question answer) |
+| [DocLLM](https://arxiv.org/abs/2401.00908)  | January 2024  | |
