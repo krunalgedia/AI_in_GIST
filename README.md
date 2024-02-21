@@ -109,6 +109,7 @@
 |  |  | Frequency | count number of unique |
 |  Bayesian| Target |Target | Encode target info in encoding using conditional target value for each unique cat value. Can lead to overfitting so smoothed versions exist.|
 |  | LOO Target | LOO Target| Exclude the current row while calculating target encoding for that row. |
+| Deep Learning  | ~   | Embedding   | Do entity embedding for high cardinality variables like cities, etc to catch semantic info by training the DNN/Embedding layer (Categorical to continuous values) |
 
 
 |Numerical Encoding| Description|
