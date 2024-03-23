@@ -97,6 +97,7 @@
 | Appropriate ML | like tree ensemble methods |
 | Better metric | Precision, Recall, F-beta score instead of accuracy |
 | CV | Stratified cross-validation scores, bootstrapping, etc |
+| Loss | Weighted loss, Focal loss and its variant (example: Dicefocal loss)|
 
 ### Variable Encoding
 
